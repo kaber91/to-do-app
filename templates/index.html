@@ -9,10 +9,15 @@
 <body>
     <h1>Hallå, kom ihåg att göra dom här grejerna (Girl, u messy):</h1>
     <ul>
-        {% for todo in todos %}
-            <li>{{ todo }}</li>
-        {% endfor %}
-    </ul>
+    {% for todo in todos %}
+        <li>
+            {{ todo }}
+            <form action="/delete/{{ loop.index0 }}" method="post" style="display:inline;">
+                <button type="submit" class="delete-btn">Klar! ✅</button>
+            </form>
+        </li>
+    {% endfor %}
+</ul>
     <form action="/add" method="post">
         <input type="text" name="todo" placeholder="Lägg till en grej att göra">
         <button type="submit">Lägg till</button>
